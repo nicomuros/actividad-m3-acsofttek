@@ -1,0 +1,21 @@
+services:
+  db:
+    container_name: softtek-actividad-m3
+    image: mysql:8.0.33
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: softtek
+      MYSQL_USER: muros
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - academia_db:/var/lib/mysql
+    networks:
+      - academia
+    restart: unless-stopped
+networks:
+  academia:
+    driver: bridge
+volumes:
+  academia_db:
