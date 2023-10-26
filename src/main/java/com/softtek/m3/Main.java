@@ -15,6 +15,10 @@ public class Main {
         TareaRepositorio tareaRepositorio = new TareaRepositorioImpl(databaseConnection);
         TareaServicio tareaServicio = new TareaServicioImpl(tareaRepositorio);
 
+        // Se crea la tabla 'todolist' en caso de que no exista
+        databaseConnection.createTable();
+
+        // Se instancia el formulario, inyectandose la dependencia del servicio
         TareaForm tareaForm = new TareaForm(tareaServicio);
     }
 }

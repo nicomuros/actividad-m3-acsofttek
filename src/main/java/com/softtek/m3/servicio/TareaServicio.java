@@ -24,31 +24,21 @@ public interface TareaServicio {
     /**
      * Agrega una nueva tarea con la descripción especificada.
      *
-     * @param titulo El título de la nueva tarea. No debe estar en blanco.
-     * @param descripcion La descripción de la nueva tarea. No debe estar en blanco.
-     * @throws DatosInvalidosException Si la descripción proporcionada está en blanco.
+     * @param tarea Objeto Tarea que se solicita se añada al repositorio
+     * @throws DatosInvalidosException Si la descripción y/o el título proporcionado está en blanco.
      */
-    void agregarTarea(String titulo, String descripcion);
+    void agregarTarea(Tarea tarea);
 
-    /**
-     * Obtiene una tarea por su ID.
-     *
-     * @param tareaId El ID de la tarea a buscar.
-     * @return Un objeto de tipo Tarea que representa la tarea encontrada.
-     * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
-     */
-    Tarea obtenerTareaPorId(Integer tareaId);
 
     /**
      * Modifica una tarea existente con la nueva descripción.
      *
-     * @param nuevaDescripcion La nueva descripción de la tarea. No debe estar en blanco.
-     * @param nuevoTitulo String del título que se va a actualizar. No debe estar en blanco
-     * @param tareaId El ID de la tarea a modificar.
+     * @param tareaModificada Tarea con ID, titulo y descripción, que representa el nuevo estado
+
      * @throws DatosInvalidosException Si la descripción proporcionada está en blanco.
      * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
      */
-    void modificarTarea(Integer tareaId, String nuevoTitulo, String nuevaDescripcion);
+    void modificarTarea(Tarea tareaModificada);
 
     /**
      * Elimina una tarea por su ID.
