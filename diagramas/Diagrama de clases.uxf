@@ -1,0 +1,94 @@
+<diagram program="umletino" version="15.1"><zoom_level>9</zoom_level><help_text>Space for diagram notesr</help_text><element><id>UMLClass</id><coordinates><x>261</x><y>1080</y><w>252</w><h>126</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+db::DBConnection
+--
+establecerConexion() : Connection
+createTable() : void
+--
+Responsabilidades:
+- Establecer la conexión a la base de datos
+- Crear la tabla donde se va a trabajar en caso 
+  de que no exista</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>1107</y><w>198</w><h>54</h></coordinates><panel_attributes>db::MySqlConnection
+--
++ establecerConexion() : Connection
++ createTable() : void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>873</y><w>306</w><h>171</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+repositorio::TareaRepositorio
+--
+seleccionarTodasLasTareas() : List&lt;Tarea&gt;
+seleccionarTareaPorId(tareaId : Integer) : Optional&lt;Tarea&gt;
+agregarTarea(tarea : Tarea) : void
+modificarTarea(tarea : Tarea) : void
+eliminarTareaPorId(idTarea : Integer) void
+--
+Responsabilidades:
+- Realizar consultas CRUD a la base
+  de datos</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>1125</y><w>126</w><h>36</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>243</x><y>891</y><w>315</w><h>117</h></coordinates><panel_attributes>repositorio::TareaRepositorioImpl
+--
+- databaseConnection: DBConnection
+--
++ TareaRepositorioImpl(databaseConnection: DBConnection) 
++ seleccionarTodasLasTareas() : List&lt;Tarea&gt;
++ seleccionarTareaPorId(tareaId : Integer) : Optional&lt;Tarea&gt;
++ agregarTarea(tarea : Tarea) : void
++ modificarTarea(tarea : Tarea) : void
++ eliminarTareaPorId(idTarea : Integer) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>855</y><w>252</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>260;30;230;30;230;20;10;20;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>306</y><w>297</w><h>117</h></coordinates><panel_attributes>modelo::Tarea
+--
+- id : Integer
+- titulo : String
+- descripcion : String
+--
++ Tarea()
++ Tarea(titulo : String, descripcion : String) 
++ Tarea(id : Integer, titulo : String, descripcion : String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>999</y><w>99</w><h>99</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;Dependencia&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>468</y><w>324</w><h>171</h></coordinates><panel_attributes>&lt;&lt;Interfaz&gt;&gt;
+servicio::TareaServicio
+--
+obtenerTareas() : List&lt;Tarea&gt;
+obtenerTareaPorId(tareaId : Integer) : Tarea
+agregarTarea(tarea : Tarea) : void
+modificarTarea(solicitud: TareaSolicitudDeModificacion) : void
+eliminarTareaPorId(idTarea : Integer) void
+--
+Responsabilidades:
+- Realizar validaciones sobre los datos que ingresa el usuario
+- Interactuar con el repositorio para operaciones CRUD</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>603</x><y>702</y><w>333</w><h>108</h></coordinates><panel_attributes>servicio::TareaServicioImpl
+- tareaRepositorio: TareaRepositorio
+--
++ TareaServicioImpl(tareaRepositorio : TareaRepositorio)
++ obtenerTareas() : List&lt;Tarea&gt;
++ obtenerTareaPorId(tareaId : Integer) : Tarea
++ agregarTarea(tarea : Tarea) : void
++ modificarTarea(solicitud: TareaSolicitudDeModificacion) : void
++ eliminarTareaPorId(idTarea : Integer) void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>630</y><w>99</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.
+&lt;&lt;Implementa&gt;&gt;</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>747</x><y>801</y><w>99</w><h>90</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;Dependencia&gt;&gt;</panel_attributes><additional_attributes>10;80;10;60;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>243</x><y>468</y><w>252</w><h>360</h></coordinates><panel_attributes>         TareaForm              
+--
+ - tareaServicio: TareaServicio 
+ - panelPrincipal: JPanel       
+ - tablaTareas: JTable          
+ - tituloUserInput: JTextField  
+ - descripcionUserInput: JTextField 
+ - agregarButton: JButton       
+ - modificarButton: JButton     
+ - eliminarButton: JButton      
+ - resultadoLabel: JLabel       
+ - idSelected: JLabel           
+ - tablaModeloTareas: DefaultTableModel 
+--
+ + TareaForm(tareaServicio: TareaServicio)
+ + createUIComponents() : void   
+ + iniciarForm() : void          
+ + iniciarTabla() : void         
+ + manejarAgregarTarea() : void  
+ + manejarSeleccionTarea() : void 
+ + manejarModificarTarea() : void 
+ + manejarEliminarTarea() : void 
+ + limpiarCampos() : void        
+ + manejarExcepcion(e: Exception) : void 
+ + manejarExito(mensaje: String) : void  
+ + listarTareas() : void         </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>486</x><y>558</y><w>135</w><h>36</h></coordinates><panel_attributes>lt=&lt;..
+&lt;&lt;Dependencia&gt;&gt;</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>UMLNote</id><coordinates><x>414</x><y>279</y><w>117</w><h>36</h></coordinates><panel_attributes>Modelo
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element></diagram>
