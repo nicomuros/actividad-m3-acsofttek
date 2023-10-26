@@ -2,7 +2,7 @@ package com.softtek.m3.repositorio;
 
 import com.softtek.m3.db.DBConnection;
 import com.softtek.m3.db.MySQLConnection;
-import com.softtek.m3.exepciones.CRUDException;
+import com.softtek.m3.excepciones.CRUDException;
 import com.softtek.m3.modelo.Tarea;
 
 import java.sql.Connection;
@@ -15,13 +15,17 @@ import java.util.Optional;
 
 public class TareaRepositorioImpl implements TareaRepositorio{
 
-    DBConnection connector = new MySQLConnection();
+    DBConnection databaseConnection;
+
+    public TareaRepositorioImpl(DBConnection databaseConnection){
+        this.databaseConnection = databaseConnection;
+    }
 
     @Override
     public void agregarTarea(Tarea tarea) {
         String query = "INSERT INTO todolist(titulo, descripcion) VALUES(?, ?)";
 
-        try (Connection conn = connector.establecerConexion();
+        try (Connection conn = databaseConnection.establecerConexion();
              PreparedStatement ps = conn.prepareStatement(query);
         ){
 
@@ -37,7 +41,7 @@ public class TareaRepositorioImpl implements TareaRepositorio{
     public List<Tarea> seleccionarTodasLasTareas(){
         List<Tarea> listaDeTareas = new ArrayList<>();
         String query = "SELECT * FROM todolist";
-        try (Connection conn = connector.establecerConexion();
+        try (Connection conn = databaseConnection.establecerConexion();
              PreparedStatement ps = conn.prepareStatement(query);
              ){
 
@@ -60,7 +64,7 @@ public class TareaRepositorioImpl implements TareaRepositorio{
         boolean existe = false;
         String query = "SELECT count(id) FROM todolist WHERE id=?";
 
-        try (Connection conn = connector.establecerConexion();
+        try (Connection conn = databaseConnection.establecerConexion();
              PreparedStatement ps = conn.prepareStatement(query);
              ){
 
@@ -80,7 +84,7 @@ public class TareaRepositorioImpl implements TareaRepositorio{
         Optional<Tarea> result = Optional.empty();
         String query = "SELECT id, titulo, descripcion FROM todolist WHERE id=?";
 
-        try (Connection conn = connector.establecerConexion();
+        try (Connection conn = databaseConnection.establecerConexion();
              PreparedStatement ps = conn.prepareStatement(query);
              ){
             ps.setInt(1, tareaId);
@@ -102,7 +106,7 @@ public class TareaRepositorioImpl implements TareaRepositorio{
     @Override
     public void modificarTarea(Tarea tarea) {
         String query = "UPDATE todolist SET titulo = ?, descripcion = ? WHERE id = ?";
-        try ( Connection conn = connector.establecerConexion();
+        try ( Connection conn = databaseConnection.establecerConexion();
                 PreparedStatement ps = conn.prepareStatement(query);
                 ){
             ps.setString(1, tarea.getTitulo());
@@ -117,7 +121,7 @@ public class TareaRepositorioImpl implements TareaRepositorio{
     @Override
     public void eliminarTareaPorId(Integer tareaId) {
         String query = "DELETE FROM todolist WHERE ID = ?";
-        try ( Connection conn = connector.establecerConexion();
+        try ( Connection conn = databaseConnection.establecerConexion();
                 PreparedStatement ps = conn.prepareStatement(query);
                 ){
             ps.setInt(1, tareaId);

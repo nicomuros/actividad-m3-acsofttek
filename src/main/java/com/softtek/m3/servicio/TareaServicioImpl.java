@@ -1,5 +1,6 @@
 package com.softtek.m3.servicio;
 
+import com.softtek.m3.db.MySQLConnection;
 import com.softtek.m3.excepciones.DatosInvalidosException;
 import com.softtek.m3.excepciones.RecursoNoEncontradoException;
 import com.softtek.m3.modelo.Tarea;
@@ -10,11 +11,14 @@ import java.util.List;
 
 public class TareaServicioImpl implements TareaServicio {
 
-    TareaRepositorio repositorio = new TareaRepositorioImpl();
+    TareaRepositorio tareaRepositorio;
 
+    public TareaServicioImpl(TareaRepositorio tareaRepositorio){
+        this.tareaRepositorio = tareaRepositorio;
+    }
     @Override
     public List<Tarea> obtenerTareas() {
-        return repositorio.seleccionarTodasLasTareas();
+        return tareaRepositorio.seleccionarTodasLasTareas();
     }
 
     @Override
@@ -24,12 +28,12 @@ public class TareaServicioImpl implements TareaServicio {
         if (descripcion.isBlank()) throw new DatosInvalidosException("La descripción no debe estar en blanco.");
 
         Tarea tarea = new Tarea(titulo, descripcion);
-        repositorio.agregarTarea(tarea);
+        tareaRepositorio.agregarTarea(tarea);
     }
 
     @Override
     public Tarea obtenerTareaPorId(Integer tareaId) {
-        return repositorio.seleccionarTareaPorId(tareaId)
+        return tareaRepositorio.seleccionarTareaPorId(tareaId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId));
     }
 
@@ -39,7 +43,7 @@ public class TareaServicioImpl implements TareaServicio {
         if (nuevoTitulo.isBlank()) throw new DatosInvalidosException("El título no debe estar en blanco.");
         if (nuevaDescripcion.isBlank()) throw new DatosInvalidosException("La descripción no debe estar en blanco.");
 
-        Tarea tarea = repositorio.seleccionarTareaPorId(tareaId)
+        Tarea tarea = tareaRepositorio.seleccionarTareaPorId(tareaId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId));
 
         boolean cambio = false;
@@ -56,13 +60,13 @@ public class TareaServicioImpl implements TareaServicio {
 
         if (!cambio) throw new DatosInvalidosException("No se presentaron modificaciones");
 
-        repositorio.modificarTarea(tarea);
+        tareaRepositorio.modificarTarea(tarea);
 
     }
 
     @Override
     public void eliminarTarea(Integer tareaId) {
-        if (!repositorio.existeTareaPorId(tareaId)) throw new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId);
-        repositorio.eliminarTareaPorId(tareaId);
+        if (!tareaRepositorio.existeTareaPorId(tareaId)) throw new RecursoNoEncontradoException("No se encontró una tarea con el id: " + tareaId);
+        tareaRepositorio.eliminarTareaPorId(tareaId);
     }
 }
