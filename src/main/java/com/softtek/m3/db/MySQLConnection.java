@@ -30,9 +30,10 @@ public class MySQLConnection implements DBConnection{
             connection = DriverManager.getConnection(url, usuario, pass);
 
             // Si no se encuentra la clase, o ocurre una excepción, se lanza un error
-        } catch (ClassNotFoundException | SQLException e){
-            throw new RecursoNoEncontradoException("No se pudo establecer la conexión con la base de datos: "
-                    + e.getMessage());
+        } catch (ClassNotFoundException e){
+            System.out.println("ClassNotFoundException: " + e.getMessage());
+        } catch (SQLException e){
+            System.out.println("SQLException: " + e.getMessage());
         }
 
         // Se retorna la conexión
