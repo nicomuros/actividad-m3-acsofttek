@@ -7,6 +7,7 @@ import com.softtek.m3.servicio.TareaServicio;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
 
@@ -236,10 +237,13 @@ public class TareaForm extends JFrame {
     private void listarTareas(){
         // Limpiar la tabla
         tablaModeloTareas.setRowCount(0);
-
+        List<Tarea> listaDeTareas = new ArrayList<>();
         // Se almacenan las tareas provistas por el servicio
-        List<Tarea> listaDeTareas = tareaServicio.obtenerTareas();
-
+        try {
+            listaDeTareas = tareaServicio.obtenerTareas();
+        } catch (Exception e){
+            manejarExcepcion(e);
+        }
         // Se rellena la tabla
         listaDeTareas.forEach((tarea) -> {
             Object[] renglonTarea = {
