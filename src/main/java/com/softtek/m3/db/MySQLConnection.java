@@ -40,15 +40,12 @@ public class MySQLConnection implements DBConnection{
         return connection;
     }
 
-    public Boolean probarConexion(){
+    public void probarConexion(){
         try (Connection conn = establecerConexion()) {
-            if (conn != null) {
-                return true;
-            }
+            System.out.println("Conexión a base de datos exitosa");
         } catch (Exception e) {
             System.out.println("e = " + e);
         }
-        return false;
     }
 
     @Override

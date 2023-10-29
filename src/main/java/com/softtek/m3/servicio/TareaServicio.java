@@ -31,6 +31,15 @@ public interface TareaServicio {
 
 
     /**
+     * Obtiene una tarea por su ID.
+     *
+     * @param tareaId El ID de la tarea a obtener.
+     * @return La tarea correspondiente al ID.
+     * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
+     */
+    Tarea obtenerTareaPorId(Integer tareaId);
+
+    /**
      * Modifica una tarea existente con la nueva descripción.
      *
      * @param tareaModificada Tarea con ID, titulo y descripción, que representa el nuevo estado
@@ -38,6 +47,7 @@ public interface TareaServicio {
      * @throws DatosInvalidosException Si la descripción proporcionada está en blanco.
      * @throws RecursoNoEncontradoException Si no se encuentra una tarea con el ID especificado.
      */
+
     void modificarTarea(Tarea tareaModificada);
 
     /**

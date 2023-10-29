@@ -78,6 +78,13 @@ public class TareaServicioImpl implements TareaServicio {
 
     }
 
+    public Tarea obtenerTareaPorId(Integer tareaId){
+
+        // Se solicita al repositorio una tarea especifica. Si no existe, se lanza un error
+        return tareaRepositorio.seleccionarTareaPorId(tareaId)
+                .orElseThrow(() -> new RecursoNoEncontradoException
+                        ("No se encontró una tarea con el id: " + tareaId));
+    }
     @Override
     public void eliminarTarea(Integer tareaId) {
 

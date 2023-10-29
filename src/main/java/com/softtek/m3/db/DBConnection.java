@@ -7,6 +7,6 @@ public interface DBConnection {
     /**
      * Método para crear la tabla "todolist" en caso de que no exista en la base de datos
      */
-    Boolean probarConexion();
+    void probarConexion();
     void createTable();
 }
