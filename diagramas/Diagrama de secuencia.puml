@@ -1,66 +1,56 @@
 @startuml
 actor User
 
-User -> TareaForm: Abrir el programa.
-activate TareaForm
-TareaForm -> TareaForm: iniciarForm()
-TareaForm -> TareaForm: iniciarTabla()
-TareaForm -> TareaForm: listarTareas()
-TareaForm -> TareaServicio: obtenerTareas()
-activate TareaServicio
-TareaServicio -> TareaRepositorio: seleccionarTodasLasTareas()
-activate TareaRepositorio
-TareaRepositorio -> TareaServicio: List<Tarea>
-deactivate TareaRepositorio
-TareaServicio --> TareaForm: List<Tarea>
-deactivate TareaServicio
-TareaForm --> User: Se muestran las tareas en la tabla
+User -> TareaVista: Abrir el programa.
+activate TareaVista
+TareaVista -> TareaVista: mostrarMenu()
 
-User -> TareaForm: Agregar tarea
-TareaForm -> TareaForm: manejarAgregarTarea()
-TareaForm -> TareaServicio: agregarTarea(Tarea tarea)
+
+User -> TareaVista: Agregar tarea
+TareaVista -> TareaVista: agregarTarea()
+TareaVista -> TareaServicio: agregarTarea(Tarea tarea)
 activate TareaServicio
 TareaServicio -> TareaRepositorio: agregarTarea(Tarea tarea)
 activate TareaRepositorio
-TareaForm -> TareaForm: listarTareas()
-TareaForm -> TareaServicio: obtenerTareas()
+TareaVista -> TareaVista: listarTareas()
+TareaVista -> TareaServicio: obtenerTareas()
 TareaServicio -> TareaRepositorio: seleccionarTodasLasTareas()
 TareaRepositorio -> TareaServicio: List<Tarea>
 deactivate TareaRepositorio
-TareaServicio --> TareaForm: List<Tarea>
+TareaServicio --> TareaVista: List<Tarea>
 deactivate TareaServicio
-TareaForm --> User: Se muestran las tareas en la tabla
+TareaVista --> User: Se muestran las tareas en la tabla
 
-User -> TareaForm: Modificar Tarea
-TareaForm -> TareaForm: manejarModificarTarea()
-TareaForm -> TareaServicio: modificarTarea(Tarea tareaModificada)
+User -> TareaVista: Modificar Tarea
+TareaVista -> TareaVista: modificarTarea()
+TareaVista -> TareaServicio: modificarTarea(Tarea tareaModificada)
 activate TareaServicio
 TareaServicio -> TareaRepositorio: modificarTarea(Tarea tareaModificada)
 activate TareaRepositorio
-TareaForm --> User: Éxito: Tarea modificada exitosamente
-TareaForm -> TareaForm: listarTareas()
-TareaForm -> TareaServicio: obtenerTareas()
+TareaVista --> User: Éxito: Tarea modificada exitosamente
+TareaVista -> TareaVista: mostrarTareas()
+TareaVista -> TareaServicio: obtenerTareas()
 TareaServicio -> TareaRepositorio: seleccionarTodasLasTareas()
 TareaRepositorio -> TareaServicio: List<Tarea>
 deactivate TareaRepositorio
-TareaServicio --> TareaForm: List<Tarea>
+TareaServicio --> TareaVista: List<Tarea>
 deactivate TareaServicio
-TareaForm --> User: Se muestran las tareas en la tabla
+TareaVista --> User: Se muestran las tareas en la tabla
 
-User -> TareaForm: Eliminar Tarea
-TareaForm -> TareaForm: manejarEliminarTarea()
-TareaForm -> TareaServicio: eliminarTarea(int tareaId)
+User -> TareaVista: Eliminar Tarea
+TareaVista -> TareaVista: eliminarTarea()
+TareaVista -> TareaServicio: eliminarTarea(int tareaId)
 activate TareaServicio
 TareaServicio -> TareaRepositorio: eliminarTareaPorId(int tareaId)
 activate TareaRepositorio
-TareaForm -> TareaForm: listarTareas()
-TareaForm -> TareaServicio: obtenerTareas()
+TareaVista -> TareaVista: mostrarTareas()
+TareaVista -> TareaServicio: obtenerTareas()
 TareaServicio -> TareaRepositorio: seleccionarTodasLasTareas()
 TareaRepositorio -> TareaServicio: List<Tarea>
 deactivate TareaRepositorio
-TareaServicio --> TareaForm: List<Tarea>
+TareaServicio --> TareaVista: List<Tarea>
 deactivate TareaServicio
-TareaForm --> User: Se muestran las tareas en la tabla
-deactivate TareaForm
+TareaVista --> User: Se muestran las tareas en la tabla
+deactivate TareaVista
 
 @enduml
