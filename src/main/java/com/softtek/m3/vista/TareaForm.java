@@ -216,7 +216,7 @@ public class TareaForm extends JFrame {
             Integer tareaId = Integer.parseInt(tareaIdString);
             tareaServicio.eliminarTarea(tareaId);
 
-            manejarExito("Tarea modificada exitosamente.");
+            manejarExito("Tarea eliminada exitosamente.");
 
         } catch (Exception e) {
             manejarExcepcion(e);
