@@ -12,7 +12,7 @@ Este proyecto fue realizado como presentación para la **Academia Java + Springb
     - [Estructura N-Tier](#estructura-n-tier)
     - [Inyección de Dependencias](#inyección-de-dependencias)
     - [DAO](#dao)
-  
+ - [Conclusiones](#conclusiones)
 # Funcionamiento de la aplicacion
 ![Funcionamiento de la aplicacion](https://github.com/nicomuros/actividad-m3-acsofttek/blob/main/capturas/Comprobacion%20con%20MySQL.gif?raw=true)
 En la grabación superior se pueden observar las distintas etapas del CRUD, junto con el manejo de errores y el feedback de los mismos al usuario:
@@ -100,7 +100,7 @@ La estructura N-Tier o el diseño en capas permite la separación de responsabil
 
 [Aqui](https://github.com/nicomuros/actividad-m3-acsofttek/blob/main/diagramas/Diagrama%20de%20clases.png?raw=true) se encuentra un diagrama de clases que ayuda a describir el tipo de relación que existe entre las distintas capas.
 
-### Patrón de Inyección de dependencias
+### Patrón de Inyección de Dependencias
 
 El patrón de Inyección de Dependencias es una parte fundamental del diseño de la aplicación y ofrece una serie de ventajas clave en el enfoque de desarrollo:
 
