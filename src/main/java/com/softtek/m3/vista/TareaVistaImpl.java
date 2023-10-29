@@ -38,15 +38,12 @@ public class TareaVistaImpl implements TareaVista{
             // Se decide que camino seguir acorde a la elección del usuario
             switch (userInputOpcion) {
                 case "1":
-                    mostrarTareas();
-                    break;
-                case "2":
                     agregarTarea();
                     break;
-                case "3":
+                case "2":
                     modificarTarea();
                     break;
-                case "4":
+                case "3":
                     eliminarTarea();
                     break;
 
