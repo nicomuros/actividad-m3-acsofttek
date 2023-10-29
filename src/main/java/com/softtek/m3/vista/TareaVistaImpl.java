@@ -93,6 +93,7 @@ public class TareaVistaImpl implements TareaVista{
     }
 
     private void modificarTarea() {
+        mostrarTareas();
         System.out.println("\nIngrese el ID de la tarea que quiere modificar");
         try {
             // Captura del ID
