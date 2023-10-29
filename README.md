@@ -72,9 +72,10 @@ CLI.
 
 
 7. En la terminal de comandos, dirigirse al directorio del proyecto donde se encuentra el archivo docker-compose.yml
-y ejecutar el comando:
+y ejecutar el comando (asegurarse de no tener otra aplicación escuchando el puerto 3306):
 
 `docker-compose up -d`
+
 8. Ejecuta la aplicación JAR con el siguiente comando, reemplazando "nombre-del-archivo.jar" con el nombre real del archivo JAR generado:
 `java -jar nombre-del-archivo.jar`
 
