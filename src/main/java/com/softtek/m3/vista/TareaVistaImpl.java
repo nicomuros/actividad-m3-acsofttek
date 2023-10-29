@@ -23,12 +23,12 @@ public class TareaVistaImpl implements TareaVista{
 
         boolean continuar = true; // Variable de control de flujo
         do {
+            mostrarTareas();
             System.out.print("""
                     \nMenú:
-                    1: Mostrar tareas.
-                    2: Agregar una tarea.
-                    3: Modificar una tarea.
-                    4: Eliminar una tarea.
+                    1: Agregar una tarea.
+                    2: Modificar una tarea.
+                    3: Eliminar una tarea.
                     0: Salir.
                     Elija una opción:""");
 
@@ -89,6 +89,7 @@ public class TareaVistaImpl implements TareaVista{
             // Se envía la descripción al servicio para que cargue la tarea en el repositorio
             tareaServicio.agregarTarea(tarea);
 
+            mostrarExito("Tarea agregada exitosamente");
         } catch (Exception e){
             mostrarError(e);
         }
@@ -117,16 +118,13 @@ public class TareaVistaImpl implements TareaVista{
             String descripcion = entrada.nextLine();
 
             // Se crea la tarea
-            Tarea nuevaTarea = new Tarea(titulo, descripcion);
+            Tarea nuevaTarea = new Tarea(tareaId, titulo, descripcion);
 
             // Se solicita al servicio modificar la tarea
             tareaServicio.modificarTarea(nuevaTarea);
 
-            // Se recupera la tarea ya modificada y se muestra en pantalla
-            Tarea tareaActualizada = tareaServicio.obtenerTareaPorId(tareaId);
-            System.out.println("Tarea modificada exitosamente: ID: " + tareaActualizada.getId() +
-                    ", Título: " + tarea.getTitulo() +
-                    ", Descripción: " + tarea.getDescripcion() + ".");
+            //Se muestra mensaje de éxito
+            mostrarExito("Tarea agregada exitosamente.");
 
         } catch (NumberFormatException e) {
             mostrarError(new DatosInvalidosException("Por favor, ingrese un caracter válido."));
@@ -150,7 +148,9 @@ public class TareaVistaImpl implements TareaVista{
 
             // Solicitud al servicio de eliminar la tarea
             tareaServicio.eliminarTarea(tareaId);
-            System.out.println("Tarea eliminada exitosamente.");
+
+            // Mostrar mensaje de éxito
+            mostrarExito("Tarea eliminada exitosamente");
         } catch (NumberFormatException e) {
             mostrarError(new DatosInvalidosException("Por favor, ingrese un caracter válido."));
         }catch (Exception e){
@@ -160,5 +160,9 @@ public class TareaVistaImpl implements TareaVista{
 
     private void mostrarError(Exception error){
         System.out.println("\nERROR: " + error.getMessage());
+    }
+
+    private void mostrarExito(String message){
+        System.out.println(message);
     }
 }
