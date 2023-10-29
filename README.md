@@ -1,4 +1,4 @@
-# Todo-App con Java, Maven, Swing, MySQL y Docker.
+ # Todo-App con Java, Maven, Swing, MySQL y Docker.
 
 Este proyecto fue realizado como presentación para la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**. El objetivo del proyecto fue desarrollar una aplicación de gestión de tareas en **Java**, donde se realice una conexión a una base de datos en **MySQL** para manejar la persistencia de datos. Para la interfaz de usuario, se eligió trabajar con **Swing**, una decisión basada en lo que estamos aprendiendo actualmente en el curso y para poner en práctica los conocimientos adquiridos hasta el momento.
 
@@ -57,8 +57,7 @@ Esto compilará el proyecto y creará un archivo JAR ejecutable en la carpeta "t
 
 `cd target`
 
-5. Iniciar MySQL y crear una base de datos llamada `softtek`. Asegurarse que esté escuchando el puerto **3306**. Las credenciales que posee de forma nativa la aplicación son `username: muros` `password: password`. En el directorio del 
- proyecto, se encuentra un archivo `docker-compose.yml` con el cual levantar un contenedor de una imagen de MySQL 8.0.3 con las configuraciones necesarias para ejecutar la aplicación.
+5. Iniciar MySQL y crear una base de datos llamada `softtek`. Asegurarse que esté escuchando el puerto **3306**. Las credenciales que posee de forma nativa la aplicación son `username: muros` `password: password`. Si se prefiere trabajar con Docker, En el directorio del proyecto, se encuentra un archivo `docker-compose.yml` con el cual levantar un contenedor de una imagen de MySQL 8.0.33 con las configuraciones necesarias para ejecutar la aplicación.
 
 
 7. Para levantar la base de datos usando el archivo docker-compose que se incluye en repositorio, asegurate de tener instalado Docker y Docker Compose en tu sistema. Si no los tienes, puedes instalarlos desde sus webs oficiales. Yo recomiendo instalar **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**, que incluye Docker Engine, Docker Compose y la interfaz CLI.
