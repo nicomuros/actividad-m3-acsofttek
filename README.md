@@ -79,7 +79,7 @@ La aplicación se ejecutará y podrás interactuar con ella a través de la inte
 ## Plugins 
 
 * **[MySQL Connector Java](https://mvnrepository.com/artifact/mysql/mysql-connector-java)**: Es un conector JDBC que proporciona las herramientas necesarias para gestionar la conexión y las consultas de manera eficiente y segura
-* * **[Maven Dependency Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin)**: Permite gestionar las dependencias del proyecto, en este caso se utiliza para copiar todas las dependencias a una carpeta particular en el momento en que se realiza el empaquetado de la aplicación a un archivo .jar logrando, de esta forma, que el proyecto tenga lo necesario para poder ejecutarse de forma apropiada.
+* **[Maven Dependency Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-dependency-plugin)**: Permite gestionar las dependencias del proyecto, en este caso se utiliza para copiar todas las dependencias a una carpeta particular en el momento en que se realiza el empaquetado de la aplicación a un archivo .jar logrando, de esta forma, que el proyecto tenga lo necesario para poder ejecutarse de forma apropiada.
 * **[Maven Jar Plugin](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin)**: En el proyecto se configuró para que, junto con `Maven Dependency Plugin`, permita ser empaquetado a un archivo .jar junto con sus dependencias.
 
 ## Patrones de diseño
