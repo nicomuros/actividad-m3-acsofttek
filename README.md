@@ -88,20 +88,19 @@ La estructura N-Tier o el diseño en capas permite la separación de responsabil
 
 1. **Capa de Presentación (`/vista`):** Esta capa corresponde a la interfaz de usuario y se encarga de la presentación visual de la aplicación. En el contexto de una aplicación Java Swing, esta capa sería responsable de crear y gestionar las ventanas, formularios y elementos de la interfaz de usuario. Se comunica con la capa de servicio para solicitar y mostrar datos.
 
-2. **Capa de Servicio (`/servicio`):** Coordina la interacción entre la capa de presentación y la capa de acceso a datos. Además se encarga de realizar validaciones y de preparar los datos antes de ser enviados a la capa de acceso a datos.
+2. **Capa de Servicio (`/servicio`):** Coordina la interacción entre la capa de presentación y la capa de acceso a datos. Además, se encarga de realizar validaciones y de preparar los datos antes de ser enviados a la capa de acceso a datos.
 
-3. **Capa de Acceso a Datos (`/repositorio`):** La capa de acceso a datos se encarga de la interacción con la base de datos. Incluye clases y componentes que se conectan a la base de datos, realizan consultas y operaciones CRUD (Crear, Leer, Actualizar, Eliminar). Aquí es donde se gestionan las conexiones a la base de datos y se ejecutan consultas SQL.
+3. **Capa de Acceso a Datos (`/repositorio`):** La capa de acceso a datos incluye clases y componentes que se conectan a la base de datos, realizan consultas y operaciones CRUD (Crear, Leer, Actualizar, Eliminar).
 
-4. **Capa de Modelo (`/modelo`):** En esta capa, se representan los datos y la estructura de la aplicación. Contiene las clases y estructuras de datos que reflejan la información que se almacena en la base de datos. El modelo puede incluir 
-también la lógica de validación de datos.
+4. **Capa de Modelo (`/modelo`):** En esta capa, se representan los datos y la estructura de la aplicación. Contiene las clases y estructuras de datos que reflejan la información que se almacena en la base de datos.
 
-5. **Capa de base de datos (`/db`):** Esta capa provee las configuraciones necesarias del Driver de MySQL y JDBC para poder realizar las conexiones a la base de datos
+5. **Capa de base de datos (`/db`):** Esta capa provee las configuraciones necesarias del Driver de MySQL y JDBC para poder realizar las conexiones a la base de datos.
 
-5. **Capa de Excepciones (`/excepciones`):** Aquí se encuentran las excepciones personalizadas de la aplicación. Heredan directamente de runtime excepcion.
+5. **Capa de Excepciones (`/excepciones`):** Aquí se encuentran las excepciones personalizadas de la aplicación. Heredan directamente de `RuntimeExcepcion`.
 
 [Aqui](https://github.com/nicomuros/actividad-m3-acsofttek/blob/main/diagramas/Diagrama%20de%20clases.png?raw=true) se encuentra un diagrama de clases que ayuda a describir el tipo de relación que existe entre las distintas capas.
 
-### Inyección de dependencias
+### Patrón de Inyección de dependencias
 
 El patrón de Inyección de Dependencias es una parte fundamental del diseño de la aplicación y ofrece una serie de ventajas clave en el enfoque de desarrollo:
 
@@ -109,16 +108,15 @@ El patrón de Inyección de Dependencias es una parte fundamental del diseño de
 El patrón de Inyección de Dependencias promueve el desacoplamiento entre los componentes de la aplicación. Esto significa que las clases no están fuertemente ligadas a sus dependencias, lo que facilita la sustitución o el cambio de componentes sin afectar otras partes del sistema. Esta flexibilidad es esencial para mantener y evolucionar la aplicación con confianza.
 
 #### Pruebas Unitarias
-La inyección de dependencias simplifica el proceso de prueba unitaria. Se pueden proporcionar implementaciones de dependencias simuladas o en blanco durante las  (por ejemplo con Mockito), lo que permite aislar y probar componentes individualmente. 
+La inyección de dependencias simplifica el proceso de prueba unitaria. Se pueden proporcionar implementaciones de dependencias simuladas o en blanco durante las pruebas, lo que permite aislar y probar componentes individualmente. 
 
 #### Preparar la aplicación para la inversión de control
 
-La Inyección de Dependencias (IoC) prepara nuestra aplicación para la implementación de Inversión de Control (IoC) proporcionada por Spring en los Beans: instancias de la aplicación ubicadas en el **Spring Container** como únicas para cuando se necesiten.
+La Inyección de Dependencias (IoC) prepara la aplicación para la implementación de Inversión de Control (IoC) proporcionada por Spring.
 
-### DAO
-La interfaz `TareaRepositorio` define métodos que se encargan de la interacción con la base de datos, como agregar, seleccionar, verificar, modificar y eliminar tareas. Esto separa claramente la lógica de acceso a datos de la lógica de negocio relacionada con las tareas.
+### Patrón DAO
+La interfaz `TareaRepositorio` define métodos que se encargan de la interacción con la base de datos, como agregar, seleccionar, verificar, modificar y eliminar tareas. Esto separa claramente la lógica de acceso a datos de la lógica de negocio relacionada con las tareas. Este patrón permite cambiar el tipo de implementación sin afectar el funcionamiento. Si en el futuro se desea trabajar con `JDBC Template` o `JPA` gracias al desacoplamiento de las clases podremos intercambiar sin problemas. Por tanto, ayuda en la escalabilidad y la mantenibilidad del software.
 
-Además, abrLa interfaz TareaRepositorio define métodos que se encargan de la interacción con la base de datos, como agregar,
-seleccionar, verificar, modificar y eliminar tareas. Esto separa claramente la lógica de acceso a datos de la lógica de 
-negocio relacionada con las tareas.
+# Conclusiones
+La realiación de este proyecto me dió la oportunidad de aprender muchas cosas: empaquetar el proyecto junto con sus dependencias, utilizar `try-with-resources` para gestionar las aperturas y cierres de conexiones, aprender el funcionamiento y la utilidad del **diagrama de secuencia**, el uso de la biblioteca Swing, y a implementar el **Patrón de Inyección de Dependencias** (que, aunque no fue requerido como condición de entrega, decidí que valdría la pena aplicarlo para aprender haciendo). En conjunto fue una experiencia muy satisfactoria, y estoy emocionado de seguir aprendiendo :) 
 
