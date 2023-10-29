@@ -18,13 +18,15 @@ public class Main {
 
             // Se comprueba si la base de datos está disponible y la conexión es exitosa
             if (databaseConnection.probarConexion()) {
+                // Crear tabla si no existe
+                databaseConnection.createTable();
 
                 // Se crean el resto de las dependencias
                 TareaRepositorio tareaRepositorio = new TareaRepositorioImpl(databaseConnection);
                 TareaServicio tareaServicio = new TareaServicioImpl(tareaRepositorio);
 
                 // Se instancia el formulario, inyectandose la dependencia del servicio
-                TareaForm tareaForm = new TareaForm(tareaServicio);
+                TareaForm tareaFormOld = new TareaForm(tareaServicio);
 
             // Si la prueba de conexión falla, se devuelve un mensaje.
             } else {
