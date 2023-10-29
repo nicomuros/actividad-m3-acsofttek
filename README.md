@@ -6,8 +6,19 @@ tareas en **Java**, donde se realice una conexión a una base de datos en **MySQ
 de datos. Para la interfaz de usuario, se eligió trabajar con **Swing**, una decisión basada en lo que estamos 
 aprendiendo actualmente en el curso y para poner en práctica los conocimientos adquiridos hasta el momento.
 
+- [Funcionamiento de la Aplicación](#funcionamiento-de-la-aplicación)
+- [Uso de la Aplicación](#uso-de-la-aplicación)
+  - [Dependencias](#dependencias)
+  - [Instalación](#instalación)
+- [Arquitectura de la Aplicación](#arquitectura-de-la-aplicación)
+  - [Plugins](#plugins)
+  - [Patrones de Diseño](#patrones-de-diseño)
+    - [Estructura N-Tier](#estructura-n-tier)
+    - [Inyección de Dependencias](#inyección-de-dependencias)
+    - [DAO](#dao)
+  
+# Funcionamiento de la aplicacion
 ![Funcionamiento de la aplicacion](https://github.com/nicomuros/actividad-m3-acsofttek/blob/main/capturas/Comprobacion%20con%20MySQL.gif?raw=true)
-#
 En la grabación superior se pueden observar las distintas etapas del CRUD, junto con el manejo de errores y el feedback
 de los mismos al usuario:
 * **Create:** Para poder realizar la carga de datos con éxito a la base de datos, es necesario que el usuario ingrese 
