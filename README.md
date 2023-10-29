@@ -42,7 +42,7 @@ Siga estos pasos para instalar la aplicación:
 
 1. Clonar el repositorio desde GitHub al sistema local. Puedes hacerlo utilizando Git y ejecutando el siguiente comando en tu terminal:
 
-`git clone https://github.com/nicomuros/actividad-m2-acsofttek.git`
+`git clone https://github.com/nicomuros/actividad-m3-acsofttek.git`
 
 2. Navegar al directorio de la aplicación:
 
