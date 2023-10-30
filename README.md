@@ -1,6 +1,6 @@
  # Todo-App con Java, Maven, CLI, MySQL y Docker.
 
-Este proyecto fue realizado como presentación para la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**. El objetivo del proyecto fue desarrollar una aplicación de gestión de tareas en **Java**, donde se realice una conexión a una base de datos en **MySQL** para manejar la persistencia de datos. Para la interfaz de usuario, se eligió trabajar con CLI, una decisión basada en proporcionar continuidad al proyecto realizado para la [segunda entrega](https://github.com/nicomuros/actividad-m2-acsofttek).
+Este proyecto fue realizado como presentación de la **Actividad M1** de la **Academia Java + Springboot**, dictada por **Softtek** en conjunto con la **Universidad Siglo-XII**. El objetivo del proyecto fue desarrollar una aplicación de gestión de tareas en **Java**, donde se realice una conexión a una base de datos en **MySQL** para manejar la persistencia de datos. Para la interfaz de usuario, se eligió trabajar con CLI, una decisión basada en proporcionar continuidad al proyecto realizado para la [segunda entrega](https://github.com/nicomuros/actividad-m2-acsofttek).
 
 - [Funcionamiento de la Aplicación](#funcionamiento-de-la-aplicacion)
 - [Uso de la Aplicación](#uso-de-la-aplicación)
@@ -33,7 +33,7 @@ Para poder ejecutar el proyecto es necesario tener instaladas y configuradas las
 * **[MySQL 8.0.33](https://downloads.mysql.com/archives/installer/)**
 * **[Git](https://git-scm.com/downloads)**
 
-Es importante tener configuradas las variables de entorno `JAVA_HOME` y `MAVEN_HOME` para ejecutar correctamente el empaquetado y la iniciación de la aplicación. 
+Es importante tener configuradas las variables de entorno `JAVA_HOME` `MAVEN_HOME`, junto con sus `PATH` para ejecutar correctamente el empaquetado y la iniciación de la aplicación. 
 
 ## Instalación
 
